@@ -45,8 +45,11 @@
     <Compile Include="Mapping\IDataMapper.cs" />
     <Compile Include="Mapping\IStatementSource.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Session\ILockManager.cs" />
     <Compile Include="Session\ISession.cs" />
-    <Compile Include="Session\ISessionManager.cs" />
+    <Compile Include="Session\ISessionFactory.cs" />
+    <Compile Include="Session\ISessionStorageContainer.cs" />
+    <Compile Include="Session\LockType.cs" />
     <Compile Include="UnitOfWork\IUnitOfWork.cs" />
     <Compile Include="UnitOfWork\IUnitOfWorkRepository.cs" />
   </ItemGroup>

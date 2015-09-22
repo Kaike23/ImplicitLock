@@ -15,7 +15,7 @@ namespace Repository.Base
     {
         private IUnitOfWork _uow;
 
-        public RepositoryBase(IUnitOfWork uow, IDataMapper<T> dataMapper)
+        public RepositoryBase(IUnitOfWork uow, IDataMapper dataMapper)
         {
             _uow = uow;
             DataMapper = dataMapper;
@@ -38,16 +38,16 @@ namespace Repository.Base
         }
         public T FindBy(Guid id)
         {
-            return DataMapper.Find(id);
+            return DataMapper.Find(id) as T;
         }
         public IEnumerable<T> FindAll()
         {
-            return DataMapper.FindMany(new FindAllStatement(TableName));
+            return DataMapper.FindMany(new FindAllStatement(TableName)).ConvertAll<T>(x => x as T);
         }
 
         #endregion
 
-        public IDataMapper<T> DataMapper { get; private set; }
+        public IDataMapper DataMapper { get; private set; }
 
         protected abstract string TableName { get; }
 

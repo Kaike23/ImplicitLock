@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "Customer";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>Test Value: @ViewBag.CustomerName</h3>
+<h4>@ViewBag.Message</h4>
+
+@if (@ViewBag.ReadLock)
+{
+    @Html.ActionLink("Edit & Save Customer", "UpdateCustomer", "Home")
+    <br />
+    @Html.ActionLink("Release Customer", "ReleaseCustomer", "Home")
+}
+
+@if (@ViewBag.Released)
+{
+    @Html.ActionLink("Read Customer", "Test", "Home")
+}
+
+<p>Use this area to provide additional information.</p>

@@ -21,8 +21,7 @@ namespace Model.Customers
 
         public static Customer Create(string firstName, string lastName)
         {
-            var sessionManager = SessionManager.Manager;
-            var session = sessionManager.GetSession(sessionManager.Current);
+            var session = SessionFactory.GetCurrentSession();
 
             var customer = new Customer(Guid.NewGuid(), firstName, lastName);
             customer.CreatedBy = session.Name;

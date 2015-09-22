@@ -5,13 +5,13 @@ namespace Infrastructure.Mapping
 {
     using Infrastructure.Domain;
 
-    public interface IDataMapper<T> where T : IEntity
+    public interface IDataMapper
     {
-        T Find(Guid Id);
-        List<T> FindMany(IStatementSource source);
+        EntityBase Find(Guid Id);
+        List<EntityBase> FindMany(IStatementSource source);
 
-        Guid Insert(T entity);
-        void Update(T entity);
-        void Delete(T entity);
+        Guid Insert(EntityBase entity);
+        void Update(EntityBase entity);
+        void Delete(EntityBase entity);
     }
 }

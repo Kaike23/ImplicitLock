@@ -66,8 +66,7 @@ namespace Repository.UnitOfWork
 
         public void Commit()
         {
-            var sessionManager = SessionManager.Manager;
-            var session = sessionManager.GetSession(sessionManager.Current);
+            var session = SessionFactory.GetCurrentSession();
 
             using (var transaction = session.DbInfo.Connection.BeginTransaction(System.Data.IsolationLevel.ReadUncommitted))
             {
@@ -98,6 +97,7 @@ namespace Repository.UnitOfWork
                     newEntities.Clear();
                     dirtyEntities.Clear();
                     removedEntities.Clear();
+                    session.DbInfo.Transaction = null;
                 }
             }
         }

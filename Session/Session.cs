@@ -17,6 +17,7 @@ namespace Session
             this.Name = name;
             this.map = new IdentityMap();
             this.DbInfo = new DbSessionInfo(connectionInfo);
+            this.LockManager = new LockManager(this);
         }
 
         #region ISession implementation
@@ -27,6 +28,8 @@ namespace Session
 
         public IDbSessionInfo DbInfo { get; private set; }
 
+        public ILockManager LockManager { get; private set; }
+
         public IdentityMap GetIdentityMap()
         {
             return this.map;
@@ -35,6 +38,9 @@ namespace Session
         public void Close()
         {
             this.map.Clear();
+            if (DbInfo.Transaction != null)
+                DbInfo.Transaction.Rollback();
+            DbInfo.Connection.Close();
         }
 
         #endregion

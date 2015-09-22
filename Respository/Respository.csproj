@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="Base\RepositoryBase.cs" />
     <Compile Include="CustomerRepository.cs" />
+    <Compile Include="Mapping\SQL\Base\LockingMapper.cs" />
     <Compile Include="Mapping\SQL\Base\SQLMapperBase.cs" />
     <Compile Include="Mapping\SQL\CustomerSQLMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
